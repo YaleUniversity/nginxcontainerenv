@@ -5,6 +5,23 @@ docker build .
 example running container
 docker run -it --env API_HOST=localhost --env API_PORT=1234 --env testsecret=blah --name nginxcontainerimage f4a8469b5de7
 
+## dockerhub push
+
+The dockerhub userID and repository name:
+ * mydockerhubuser/createsecrets
+
+docker login --username=mydockerhubuser
+
+docker build . && docker rm friendlyimagename
+
+docker tag 1c4394e94846 mydockerhubuser/createsecrets:nginxenv   
+
+docker push mydockerhubuser/createscripts:nginxenv
+
+### example running container
+docker run -it --env API_HOST=localhost --env API_PORT=1234 --env testsecret=blah --name friendlyimagename f4a8469b5d
+e7
+
 get the container ID so you can connect to it and verify the image has the files modified with the ENVs
 docker ps 
 
